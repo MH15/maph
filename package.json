@@ -1,0 +1,23 @@
+{
+  "name": "maph",
+  "version": "0.0.1",
+  "description": "3D Graphing Tool for Calc 3 and Above",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Hall",
+  "license": "MIT",
+  "dependencies": {
+    "controlkit": "^0.1.9",
+    "dat.gui": "^0.7.2",
+    "melanke-watchjs": "^1.5.0",
+    "on-change": "^0.1.0",
+    "three": "^0.96.0",
+    "three-orbit-controls": "^82.1.0",
+    "three-orbitcontrols-ts": "^0.1.2"
+  }
+}
