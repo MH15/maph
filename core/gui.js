@@ -4,7 +4,7 @@ import * as dat from 'dat.gui'
 const ControlKit = require('controlkit');
 
 
-function Generate(R2, V, R2_cb, V_cb) {
+function Generate(R2, V, R2_cb, V_cb, redrawVectors,redrawFunctions) {
 	const controlKit = new ControlKit();
 	var obj = {
 				value : 1,
@@ -30,27 +30,27 @@ function Generate(R2, V, R2_cb, V_cb) {
 	console.log(controlKit)
 
 
-	let vectors_group = controlKit.addPanel({label: 'Vectors', align : 'left', width: 200, enable: false})
+	let vectors_group = controlKit.addPanel({label: 'Vectors', align : 'left', width: 200, enable: true})
 	// create vector inputs
+	vectors_group.addButton('update', redrawVectors)
 	vectors_group.addButton('new vector', function () {
 		data.vectors.push({
 			name: `vector${data.vectors.length}`,
 			string: '0, 0, 0; 1, 1, 1',
 			tail: [0, 0, 0],
 			head: [1, 1, 1],
-			color: 0xd35400
+			color: '#d35400'
 		})
 		let l = data.vectors.length - 1
 		vectors_group.addStringInput(data.vectors[l], `string`, {label: data.vectors[l].name})
-
 	})
 	for (var i = 0; i < data.vectors.length; i ++) {
-		// TODO: make work
+		// TODO: make it actually work
 		vectors_group.addStringInput(data.vectors[i], `string`, {label: data.vectors[i].name})
 	}
-
 	let functions_group = controlKit.addPanel({label: 'Functions', align : 'left', width: 200, enable: false})
 	// create function inputs
+	functions_group.addButton('update', redrawFunctions)
 	functions_group.addButton('new function', function () {
 		data.functions.push({
 			name: `function${data.functions.length}`,
@@ -60,7 +60,7 @@ function Generate(R2, V, R2_cb, V_cb) {
 		})
 		let l = data.functions.length - 1
 		functions_group.addStringInput(data.functions[l], `string`, {label: data.functions[l].name})
-		console.log(data.vectors)
+		console.log(data)
 	})
 	for (var i = 0; i < data.functions.length; i ++) {
 		functions_group.addStringInput(data.functions[i], `string`, {label: data.functions[i].name})

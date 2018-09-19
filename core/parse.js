@@ -14,11 +14,15 @@ function Array(string) {
 	all.forEach(item => {
 		item = Number(item)
 	})
-	console.log(all)
 	return all
+}
+
+function Color(hex_string) {
+	return parseInt(hex_string.replace(/^#/, ''), 16);
+
 }
 
 
 
 
-export { Array }
+export { Array, Color }
